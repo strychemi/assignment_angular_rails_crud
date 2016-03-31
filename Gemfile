@@ -15,6 +15,14 @@ gem 'angular_rails_csrf'
 
 group :development, :test do
   gem 'byebug'
+  gem 'hirb'
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
