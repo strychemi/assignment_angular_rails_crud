@@ -1,0 +1,1 @@
+pinboard.controller('testCtrl', function() {});
