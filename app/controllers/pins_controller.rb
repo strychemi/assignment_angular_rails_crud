@@ -20,11 +20,11 @@ class PinsController < ApplicationController
 
   def update
     @pin = Pin.find(params[:id])
+    p @pin
     respond_to do |format|
       if @pin.update(pin_params)
         format.json { render json: @pin }
       else
-        puts "fails"
         format.json { render json: @pin, status: :unprocessable_entity }
       end
     end

@@ -2,5 +2,6 @@
 <p>{{showPin.buy_sell}}</p>
 <p>{{showPin.description}}</p>
 
-<a ui-sref="pins.show.edit({pinObj: {{showPin}}, id: {{showPin.id}}})">Edit Pin</a>
-<div ui-view></div>
+<a ui-sref="pins.edit({pinObj: {{showPin}}, id: {{showPin.id}}})">Edit Pin</a>
+
+<button ng-click="deletePin()">Delete Pin</button>

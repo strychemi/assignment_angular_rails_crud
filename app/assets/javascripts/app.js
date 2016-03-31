@@ -39,15 +39,15 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
       },
       controller: 'pinShowCtrl'
      })
-     .state('pins.show.edit', {
-       url: "/edit",
+     .state('pins.edit', {
+       url: "/:id/edit",
        templateUrl: '/templates/pinEdit.html',
        params: {
         pinObj: null,
         id: null
       },
       controller: 'pinEditCtrl'
-     })    
+     })
      ;
 
      $urlRouterProvider.otherwise('/pins');
