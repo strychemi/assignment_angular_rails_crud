@@ -5,8 +5,8 @@ pinboard.controller("pinEditCtrl",
     $scope.item_name = $scope.showPin.item_name;
     $scope.description = $scope.showPin.description;
     $scope.user_id = $scope.showPin.user_id;
-    
-  
+
+
     $scope.updatePin = function() {
 
       var newPin = {};
@@ -15,10 +15,8 @@ pinboard.controller("pinEditCtrl",
       newPin.description = $scope.description;
       newPin.buy_sell = $scope.buy_sell;
       newPin.user_id = $scope.user_id;
-      console.log("Here");
       Restangular.one('pins/' + $scope.showPin.id).patch(newPin).then(function(response) {
       });
-      console.log("Here 444");
     };
 
   }]
