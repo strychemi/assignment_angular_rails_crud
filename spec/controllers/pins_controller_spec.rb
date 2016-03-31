@@ -1,6 +1,8 @@
-describe "pins controller" do
-  let(:user) { create(:user) }
-  let(:pin) { create(:pin) }
+require 'rails_helper'
+
+describe PinsController do
+  let!(:user) { create(:user) }
+  let!(:pin) { create(:pin) }
 
   describe "GET /pins.json" do
 
@@ -14,33 +16,18 @@ describe "pins controller" do
     end
 
     it 'should respond with a success' do
-      expect( response.status ).to eq( 304 )
+      expect( response.status ).to eq( 200 )
     end
 
     # You want to know that this JSON can be parsed
     it 'returns a valid JSON object' do
-      expect( json ).to be_a Hash
+      expect( json ).to be_a Array
     end
 
-    # # You want to know that this JSON has the right ID.
-    # it 'returns an object with the post ID' do
-    #   expect( json[0] ).to be post.id
-    # end
-    #
-    #
-    # # checking individual fields
-    # it 'returns an object with the post's id' do
-    #   expect( json.id ).to eq post.id
-    # end
-    #
-    # it 'returns an object with the post's body' do
-    #   expect( json.body ).to eq post.body
-    # end
-    #
-    # # and for a quick explicit list of keys, do something like this
-    # it 'returns the right keys' do
-    #   expect( json.body.keys ).to eq( [:id, :title, :body, :user_id] )
-    # end
+    # You want to know that this JSON has the right ID.
+    it 'returns an object with the pin ID' do
+      expect( json[0]["id"].to_i ).to be pin.id
+    end
 
   end
 end

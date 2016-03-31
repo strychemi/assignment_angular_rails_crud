@@ -33,12 +33,12 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
 
-  config.include Macros::Post
-  config.include Macros::Session
-  config.include Macros::Search
-  config.include Macros::User
+  # config.include Macros::Post
+  # config.include Macros::Session
+  # config.include Macros::Search
+  # config.include Macros::User
 
-  config.include ControllerHelper
+  #config.include ControllerHelper
 
   config.after(:all) do
     if Rails.env.test?

@@ -1,3 +1,17 @@
+<form name="pinForm"> 
+  <label>Name</label>
+  <input type="text" name="itemname" ng-model="item_name"><br>
+  <label>Description</label>
+  <input type="text" name="itemname" ng-model="description"><br>
+  <label>Buy/Sell</label>
+  <select ng-model="buy_sell">
+    <option value="true">Buy</option>
+    <option value="false">Sell</option>
+  </select>
+  <button type="submit" ng-click="postPin()">Submit</button>
+</form>
+
+
 <h1>Pins Index</h1>
 <table>
   <thead>
