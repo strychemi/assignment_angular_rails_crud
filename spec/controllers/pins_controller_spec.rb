@@ -56,6 +56,7 @@ describe PinsController do
       post_create_invalid
       expect( response.status ).to eq( 422 )
     end
+  end
 
   describe "GET /pins/:id.json" do
     before do
@@ -78,8 +79,26 @@ describe PinsController do
     it 'returns an object with the pin ID' do
       expect( json["id"].to_i ).to be pin.id
     end
-
   end
 
+  describe "PATCH /pins/:id.json" do
+    before do
+      user
+      pin
+      patch :update, format: :json, id: pin.id, pin: attributes_for(:pin, item_name: "UPDATE COOL")
+    end
+
+    it 'should respond with a success' do
+      expect( response.status ).to eq( 200 )
+    end
+
+    it 'returns a valid JSON object' do
+      expect( json ).to be_a Hash
+    end
+
+    it 'returns an object with the pin ID' do
+      expect( json["id"].to_i ).to be pin.id
+    end
   end
+
 end
