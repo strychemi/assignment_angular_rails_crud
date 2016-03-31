@@ -1,44 +1,37 @@
 var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
 
-.config(['RestangularProvider', function(RestangularProvider){
-  RestangularProvider.setBaseUrl('/api/v1');
-  RestangularProvider.setRequestSuffix('.json');
-}])
+.config(['$urlRouterProvider', '$stateProvider', 'RestangularProvider',
+  function($urlRouterProvider, $stateProvider, RestangularProvider){
 
-.config(['$urlRouterProvider', '$stateProvider',
-  function($urlRouterProvider, $stateProvider){
+   RestangularProvider.setBaseUrl('/api/v1');
+   RestangularProvider.setRequestSuffix('.json');
+   RestangularProvider.setDefaultHttpFields({
+       "content-type": "application/json"
+   });
+   RestangularProvider.setResponseExtractor( function( response, operation ) {
+       return response.data;
+   });
 
    $stateProvider
-     .state('posts', {
-       url: '/posts',
-       templateUrl: '/templates/postsLayout.html'
+     .state('pins', {
+       url: '/pins',
+       templateUrl: '/templates/pinsLayout.html'
      })
-     .state('posts.index',{
+     .state('pins.index',{
        url: "/index",
-       templateUrl: '/templates/postsIndex.html',
-       controller: 'PostsIndexCtrl',
+       templateUrl: '/templates/pinsIndex.html',
+       controller: 'PinsIndexCtrl',
        resolve: {
-         posts: ['Restangular', function(Restangular){
-           return Restangular.all('posts').getList();
+         pins: ['Restangular', function(Restangular){
+           return Restangular.all('pins').getList();
          }]
        }
      })
-     .state('posts.show', {
-       url: "/:id",
-       templateUrl: "/templates/postsShow.html",
-       controller: 'PostsShowCtrl',
-       resolve: {
-         post: ['Restangular', '$stateParams',
-                 function(Restangular, $stateParams){
-                   return Restangular.one('posts', $stateParams.id).get();
-               }]}
-     });
 
-
-     $urlRouterProvider.otherwise('/posts');
+     $urlRouterProvider.otherwise('/pins');
 
  }])
 
-.run(function($rootScope){
- $rootScope.$on("$stateChangeError", console.log.bind(console));
-});
+// .run(function($rootScope){
+//  $rootScope.$on("$stateChangeError", console.log.bind(console));
+// });
