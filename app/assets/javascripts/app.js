@@ -29,7 +29,16 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
            return Restangular.all('pins').getList().$object;
          }]
        }
-     });
+     })
+     .state('pins.show', {
+       url: "/:id",
+       templateUrl: '/templates/pinShow.html',
+       params: {
+        pinsObj: null
+      },
+      controller: 'pinShowCtrl'
+     })
+     ;
 
      $urlRouterProvider.otherwise('/pins');
 

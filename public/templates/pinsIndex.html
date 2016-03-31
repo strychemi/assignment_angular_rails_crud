@@ -1,4 +1,4 @@
-<form name="pinForm"> 
+<form name="pinForm">
   <label>Name</label>
   <input type="text" name="itemname" ng-model="item_name"><br>
   <label>Description</label>
@@ -30,7 +30,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="pin in pins|orderBy:'-created_at'">
-     <td>{{pin.item_name}}</td>
+     <td ui-sref="pin.show({ pinObj: {{pin}} })">{{pin.item_name}}</td>
      <td>{{pin.description}}</td>
      <td>{{pin.buy_sell}}</td>
      <td>{{pin.user_id}}</td>
