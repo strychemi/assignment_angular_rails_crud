@@ -1,25 +1,25 @@
-
+<h1>Pins Index</h1>
 <table>
   <thead>
     <th>
-      "Item Name"
-    </th>  
-    <th>
-      "Description"
+      Item Name
     </th>
     <th>
-      "Buy/ Sell"
-    </th> 
+      Description
+    </th>
     <th>
-      "User"
-    </th>        
-  </thead>  
+      Buy/ Sell
+    </th>
+    <th>
+      User
+    </th>
+  </thead>
   <tbody>
     <tr ng-repeat="pin in pins">
-     <td>pin.item_name</td>
-     <td>pin.description</td>
-     <td>pin.buy_sell</td>
-     <td>pin.user_id</td>
-    </tr>  
+     <td>{{pin.item_name}}</td>
+     <td>{{pin.description}}</td>
+     <td>{{pin.buy_sell}}</td>
+     <td>{{pin.user_id}}</td>
+    </tr>
   </tbody>
-</table>    
+</table>

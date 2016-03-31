@@ -8,29 +8,32 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
    RestangularProvider.setDefaultHttpFields({
        "content-type": "application/json"
    });
-   RestangularProvider.setResponseExtractor( function( response, operation ) {
-       return response.data;
-   });
 
    $stateProvider
-     .state('pins', {
-       url: '/pins',
-       templateUrl: '/templates/pinsLayout.html'
-     })
+      .state('pins', {
+        url: '/pins',
+        abstract: true,
+        views: {
+         '': {
+            url: '',
+            templateUrl: '/templates/pinsLayout.html'
+          }
+        }
+      })
      .state('pins.index',{
-       url: "/index",
+       url: '',
        templateUrl: '/templates/pinsIndex.html',
-       controller: 'PinsIndexCtrl',
+       controller: 'pinsIndexCtrl',
        resolve: {
          pins: ['Restangular', function(Restangular){
-           return Restangular.all('pins').getList();
+           return Restangular.all('pins').getList().$object;
          }]
        }
-     })
+     });
 
      $urlRouterProvider.otherwise('/pins');
 
- }])
+ }]);
 
 // .run(function($rootScope){
 //  $rootScope.$on("$stateChangeError", console.log.bind(console));

@@ -8,5 +8,5 @@ class PinsController < ApplicationController
       format.json {render json: @pins}
 
     end
-  end  
+  end
 end
