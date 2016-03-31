@@ -34,7 +34,8 @@ var pinboard = angular.module('pinboard', ['ui.router', 'restangular'])
        url: "/:id",
        templateUrl: '/templates/pinShow.html',
        params: {
-        pinsObj: null
+        pinObj: null,
+        id: null
       },
       controller: 'pinShowCtrl'
      })
