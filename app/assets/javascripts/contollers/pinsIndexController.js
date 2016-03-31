@@ -12,11 +12,11 @@ pinboard.controller("pinsIndexCtrl",
       
       newPin.item_name = $scope.item_name;
       newPin.description = $scope.description;
-      newPin.ibuy_sell = $scope.buy_sell;
+      newPin.buy_sell = $scope.buy_sell;
       newPin.user_id = 1;
 
-      newPin = JSON.stringify(newPin); 
-      Restangular.all('pin').post(newPin).then(function(response) {
+      //newPin = JSON.stringify(newPin); 
+      Restangular.all('pins').post(newPin).then(function(response) {
         var newPin = {};
         console.log(response);
       });

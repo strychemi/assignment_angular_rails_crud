@@ -11,8 +11,8 @@ class PinsController < ApplicationController
   end
 
   def create
-    @pin = Post.new(pin_params)
-
+    @pin = Pin.new(pin_params)
+    puts "PIN is #{@pin}"
     respond_to do |format|
       if @pin.save
         format.json { render json: @pin }
