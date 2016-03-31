@@ -17,6 +17,20 @@ class PinsController < ApplicationController
     end
   end
 
+
+  def update
+    @pin = Pin.find(params[:id])
+    respond_to do |format|
+      if @pin.update(pin_params)
+        format.json { render json: @pin }
+      else
+        puts "fails"
+        format.json { render json: @pin, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   def create
     @pin = Pin.new(pin_params)
     respond_to do |format|
@@ -36,6 +50,7 @@ class PinsController < ApplicationController
     params.require(:pin).permit(:item_name,
                                 :description,
                                 :user_id,
-                                :buy_sell)
+                                :buy_sell,
+                                :id)
   end
 end
