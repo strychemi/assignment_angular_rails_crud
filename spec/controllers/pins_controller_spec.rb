@@ -101,4 +101,23 @@ describe PinsController do
     end
   end
 
+  describe "DELETE /pins/:id.json" do
+    before do
+      user
+      pin
+      delete :destroy, format: :json, id: pin.id
+    end
+
+    it 'should respond with a success' do
+      expect( response.status ).to eq( 200 )
+    end
+
+    it 'returns a valid JSON object' do
+      expect( json ).to be_a Hash
+    end
+
+    it 'returns an object with the pin ID' do
+      expect( json["id"].to_i ).to be pin.id
+    end
+  end
 end
