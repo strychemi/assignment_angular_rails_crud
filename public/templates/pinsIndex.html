@@ -2,7 +2,7 @@
   <label>Name</label>
   <input type="text" name="itemname" ng-model="item_name"><br>
   <label>Description</label>
-  <input type="text" name="itemname" ng-model="description"><br>
+  <input type="text" name="description" ng-model="description"><br>
   <label>Buy/Sell</label>
   <select ng-model="buy_sell">
     <option value="true">Buy</option>
@@ -13,7 +13,7 @@
 
 
 <h1>Pins Index</h1>
-<table>
+<table class="table">
   <thead>
     <th>
       Item Name
@@ -29,7 +29,7 @@
     </th>
   </thead>
   <tbody>
-    <tr ng-repeat="pin in pins">
+    <tr ng-repeat="pin in pins|orderBy:'-created_at'">
      <td>{{pin.item_name}}</td>
      <td>{{pin.description}}</td>
      <td>{{pin.buy_sell}}</td>
